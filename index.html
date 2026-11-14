@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101827">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Rider Profit">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Rider Safe Profit</title>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">₨</div><div><h1>Rider Safe Profit</h1><p>Uber Eats • Daily tracker</p></div></div>
+  <span class="local">Saved on this device</span>
+</header>
+<main>
+  <section class="hero">
+    <div><p class="eyebrow">TODAY'S NET PROFIT</p><div class="money" id="todayNet">Rs. 0.00</div><p class="muted" id="todayMeta">Add your first order to begin</p></div>
+    <div class="target"><span>20-day target</span><strong>Rs. 98,000</strong><small id="targetProgress">0% achieved</small></div>
+  </section>
+  <nav class="tabs">
+    <button class="tab active" data-tab="dashboard">Dashboard</button>
+    <button class="tab" data-tab="order">Add order</button>
+    <button class="tab" data-tab="expenses">Expenses</button>
+    <button class="tab" data-tab="history">History</button>
+  </nav>
+  <section id="dashboard" class="panel active">
+    <div class="stats">
+      <article><span>Today's earnings</span><b id="todayIncome">Rs. 0</b></article>
+      <article><span>Today's expenses</span><b id="todayExpenses">Rs. 0</b></article>
+      <article><span>Orders today</span><b id="todayOrders">0</b></article>
+      <article><span>Actual km today</span><b id="todayKm">0 km</b></article>
+    </div>
+    <article class="card">
+      <h2>Safe order calculator</h2>
+      <p class="muted">Enter the offered payment and actual bike-meter distance before accepting.</p>
+      <div class="grid2">
+        <label>Offer (Rs.)<input id="calcPay" type="number" min="0" placeholder="e.g. 350"></label>
+        <label>Actual distance (km)<input id="calcKm" type="number" min="0" step="0.1" placeholder="e.g. 8.5"></label>
+      </div>
+      <div class="result" id="calcResult">Enter payment and distance to calculate.</div>
+    </article>
+    <article class="card">
+      <h2>Settings</h2>
+      <div class="grid2">
+        <label>Petrol price (Rs./L)<input id="petrolPrice" type="number" value="424"></label>
+        <label>Bike mileage (km/L)<input id="mileage" type="number" value="35"></label>
+        <label>Maintenance reserve (Rs./km)<input id="maintenance" type="number" value="3"></label>
+        <label>Target (Rs.)<input id="goal" type="number" value="98000"></label>
+      </div>
+      <button class="primary" id="saveSettings">Save settings</button>
+    </article>
+  </section>
+  <section id="order" class="panel">
+    <article class="card">
+      <h2>Record completed order</h2>
+      <form id="orderForm">
+        <label>Date<input id="orderDate" type="date" required></label>
+        <div class="grid2">
+          <label>Payment received (Rs.)<input id="orderPay" type="number" min="0" step="0.01" required placeholder="350"></label>
+          <label>Distance (km)<input id="orderDistance" type="number" min="0.1" step="0.1" required placeholder="8.5"></label>
+        </div>
+        <label>Note (optional)<input id="orderNote" type="text" placeholder="Pickup / delivery details"></label>
+        <div class="result" id="orderEstimate">Estimated profit will appear here.</div>
+        <button class="primary" type="submit">Save order</button>
+      </form>
+    </article>
+  </section>
+  <section id="expenses" class="panel">
+    <article class="card">
+      <h2>Add daily expense</h2>
+      <form id="expenseForm">
+        <label>Date<input id="expenseDate" type="date" required></label>
+        <div class="grid2">
+          <label>Category<select id="expenseCategory"><option>Fuel</option><option>Food & Drinks</option><option>Parking</option><option>Maintenance</option><option>Other</option></select></label>
+          <label>Amount (Rs.)<input id="expenseAmount" type="number" min="0" step="0.01" required placeholder="500"></label>
+        </div>
+        <label>Note (optional)<input id="expenseNote" type="text" placeholder="What was this expense for?"></label>
+        <button class="primary" type="submit">Save expense</button>
+      </form>
+    </article>
+    <p class="hint">Daily net profit uses the expenses you enter here. Order estimates are shown separately; do not enter estimated fuel again as an actual expense unless you really paid it.</p>
+  </section>
+  <section id="history" class="panel">
+    <article class="card">
+      <div class="heading-row"><h2>Recent activity</h2><button class="secondary" id="exportCsv">Export CSV</button></div>
+      <div id="historyList" class="history"></div>
+      <button class="danger" id="clearData">Delete all app data</button>
+    </article>
+  </section>
+</main>
+<footer>Private local tracker • Data stays in this browser unless you export it.</footer>
+<script src="app.js"></script>
+</body>
+</html>
