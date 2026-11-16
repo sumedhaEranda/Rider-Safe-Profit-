@@ -24,10 +24,62 @@
   </section>
   <nav class="tabs">
     <button class="tab active" data-tab="dashboard">Dashboard</button>
+    <button class="tab" data-tab="scan">Scan offer</button>
     <button class="tab" data-tab="order">Add order</button>
     <button class="tab" data-tab="expenses">Expenses</button>
     <button class="tab" data-tab="history">History</button>
   </nav>
+
+  <section id="scan" class="panel">
+    <article class="card scan-card">
+      <div class="scan-heading">
+        <div><p class="eyebrow dark-eyebrow">LIVE OFFER CHECK</p><h2>Scan Uber offer</h2>
+        <p class="muted">Capture the offer screen or choose a screenshot. The app reads the amount and kilometres.</p></div>
+        <span class="scan-icon">⌁</span>
+      </div>
+      <label class="upload-label" for="offerImage">
+        <span class="camera-icon">▣</span>
+        <b>Scan with camera / upload screenshot</b>
+        <small>Works best with a clear Uber offer screen</small>
+      </label>
+      <input id="offerImage" class="file-input" type="file" accept="image/*" capture="environment">
+      <img id="offerPreview" class="offer-preview" alt="Selected offer screenshot" hidden>
+      <div class="scan-actions">
+        <button class="primary" id="scanButton" type="button" disabled>Read offer details</button>
+        <button class="secondary" id="clearScan" type="button">Clear</button>
+      </div>
+      <div id="scanStatus" class="scan-status" role="status">Choose an offer screenshot to begin.</div>
+    </article>
+
+    <article class="card offer-card">
+      <div class="offer-top"><div><span class="offer-label">DETECTED OFFER</span><h2 id="offerTypeBadge">Moto offer</h2></div><span class="live-dot">● READY</span></div>
+      <div class="offer-price" id="offerPricePreview">LKR 0.00</div>
+      <div class="offer-rate" id="offerRatePreview">LKR 0.00 / km</div>
+      <div class="offer-stats">
+        <div><small>Pickup distance</small><b id="pickupPreview">— km</b></div>
+        <div><small>Trip distance</small><b id="tripPreview">— km</b></div>
+        <div><small>Total distance</small><b id="totalPreview">0.0 km</b></div>
+      </div>
+      <div class="offer-input-grid">
+        <label>Offer type
+          <select id="scanType"><option value="Moto">Uber Moto</option><option value="Delivery">Uber Delivery</option></select>
+        </label>
+        <label>Offer amount (LKR)
+          <input id="scanPay" type="number" min="0" step="0.01" placeholder="150.00">
+        </label>
+        <label>Pickup distance (km)
+          <input id="scanPickup" type="number" min="0" step="0.1" placeholder="4.3">
+        </label>
+        <label>Trip distance (km)
+          <input id="scanTrip" type="number" min="0" step="0.1" placeholder="2.1">
+        </label>
+      </div>
+      <div class="result" id="scanEstimate">Scan an offer to calculate estimated profit.</div>
+      <button class="primary" id="saveScannedOrder" type="button" disabled>Save as completed order</button>
+      <p class="hint">Check the detected values before saving. For a delivery with multiple stops, enter the total route distance shown by Uber in the Trip distance field and keep Pickup distance at 0.</p>
+    </article>
+    <p class="hint">Camera access requires the app to be opened from a secure HTTPS address. OCR needs an internet connection the first time it loads.</p>
+  </section>
   <section id="dashboard" class="panel active">
     <div class="stats">
       <article><span>Today's earnings</span><b id="todayIncome">Rs. 0</b></article>

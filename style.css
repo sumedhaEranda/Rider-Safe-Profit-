@@ -1,1 +1,29 @@
 *{box-sizing:border-box}body{margin:0;background:#f3f5f9;color:#172033;font:15px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}header{background:#101827;color:#fff;padding:18px max(18px,calc((100% - 760px)/2));display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{display:flex;align-items:center;gap:11px}.logo{width:42px;height:42px;border-radius:13px;background:#24c58a;color:#071d17;display:grid;place-items:center;font-size:24px;font-weight:900}h1{font-size:18px;margin:0}header p{margin:3px 0 0;color:#aab5c7;font-size:12px}.local{font-size:10px;color:#aab5c7}main{max-width:760px;margin:auto;padding:16px}.hero{background:linear-gradient(130deg,#17243a,#203c56);border-radius:20px;padding:20px;color:white;display:flex;justify-content:space-between;gap:12px;align-items:center}.eyebrow{font-size:10px;letter-spacing:1.5px;color:#a9bbce;margin:0 0 7px}.money{font-size:30px;font-weight:800}.muted{color:#8190a4;font-size:12px;line-height:1.5}.hero .muted{color:#b8c5d5}.target{background:#ffffff14;border:1px solid #ffffff22;padding:12px;border-radius:14px;min-width:120px}.target span,.target small{display:block;color:#c4d1df;font-size:10px}.target strong{display:block;font-size:16px;margin:7px 0}.tabs{display:flex;gap:5px;overflow:auto;padding:13px 0}.tab{border:0;background:#e4e9f1;color:#5b6678;padding:10px 13px;border-radius:10px;white-space:nowrap;font-weight:650}.tab.active{background:#17243a;color:#fff}.panel{display:none}.panel.active{display:block}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}.stats article,.card{background:white;border:1px solid #e8ebf1;border-radius:16px;padding:15px;box-shadow:0 3px 12px #17203308}.stats span{display:block;color:#7b8798;font-size:11px}.stats b{display:block;margin-top:8px;font-size:18px}.card{margin-bottom:12px}h2{font-size:16px;margin:0 0 8px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}label{display:block;font-size:12px;font-weight:650;color:#596579;margin:12px 0}input,select{display:block;width:100%;margin-top:6px;border:1px solid #dce2eb;border-radius:10px;padding:12px;background:#fbfcfe;color:#172033;font-size:16px;min-width:0}.primary,.secondary,.danger{border:0;border-radius:10px;padding:12px 15px;font-weight:750;margin-top:10px}.primary{background:#087e5b;color:white;width:100%}.secondary{background:#eaf0f7;color:#26364c;margin:0}.danger{background:#fff0f0;color:#b42318;width:100%;font-size:12px}.result{background:#eef8f4;border:1px solid #ccebdd;padding:13px;border-radius:12px;margin:12px 0;font-size:13px;line-height:1.6;color:#155c45}.result.warn{background:#fff7e8;border-color:#f3dfb5;color:#87530a}.result.bad{background:#fff0f0;border-color:#f3cccc;color:#9c2424}.hint{font-size:12px;color:#7a8798;line-height:1.6;padding:0 4px}.heading-row{display:flex;align-items:center;justify-content:space-between}.history-item{padding:12px 0;border-bottom:1px solid #edf0f4;display:flex;justify-content:space-between;gap:10px;font-size:13px}.history-item small{display:block;color:#8490a0;margin-top:4px}.history-item b{white-space:nowrap}footer{text-align:center;padding:20px;color:#8a95a5;font-size:10px}@media(max-width:380px){.hero{padding:15px}.money{font-size:25px}.target{min-width:108px}.grid2{gap:7px}}
+/* Offer scanner */
+.dark-eyebrow{color:#087e5b;margin-bottom:5px}
+.scan-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.scan-heading h2{font-size:20px;margin:0}
+.scan-icon{width:44px;height:44px;border-radius:14px;background:#e8f7f0;color:#087e5b;display:grid;place-items:center;font-size:30px}
+.upload-label{border:2px dashed #b9d9cc;border-radius:15px;background:#f5fbf8;min-height:116px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:16px;margin:16px 0 8px;color:#155c45;cursor:pointer}
+.upload-label small{font-weight:400;color:#718477}
+.camera-icon{font-size:28px}
+.file-input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.offer-preview{display:block;width:100%;max-height:330px;object-fit:contain;background:#f0f2f5;border-radius:12px;margin:12px 0}
+.scan-actions{display:grid;grid-template-columns:1fr auto;gap:8px}
+.scan-actions .primary,.scan-actions .secondary{margin-top:8px}
+.scan-status{font-size:12px;color:#64748b;padding:10px 2px;line-height:1.5}
+.scan-status.error{color:#b42318}
+.scan-status.success{color:#087e5b}
+.offer-card{border:1px solid #ccebdd}
+.offer-top{display:flex;justify-content:space-between;align-items:center}
+.offer-label{font-size:10px;letter-spacing:1px;color:#758397;font-weight:800}
+.offer-top h2{margin:4px 0 0}
+.live-dot{font-size:10px;color:#087e5b;font-weight:800}
+.offer-price{font-size:36px;letter-spacing:-1px;font-weight:850;margin-top:14px;color:#111827}
+.offer-rate{font-size:16px;font-weight:750;color:#087e5b;margin:2px 0 14px}
+.offer-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;border-top:1px solid #edf0f4;border-bottom:1px solid #edf0f4;padding:12px 0;margin-bottom:10px}
+.offer-stats small{display:block;color:#8190a4;font-size:10px}
+.offer-stats b{display:block;font-size:15px;margin-top:5px}
+.offer-input-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px}
+.offer-input-grid label{margin:8px 0}
+@media(max-width:380px){.offer-price{font-size:30px}.offer-stats{gap:4px}.offer-stats b{font-size:13px}}

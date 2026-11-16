@@ -16,5 +16,7 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "description": "Scan Uber Moto and Delivery offers, estimate costs and track rider profit.",
+  "orientation": "portrait"
 }
