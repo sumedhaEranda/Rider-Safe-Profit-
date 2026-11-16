@@ -34,7 +34,7 @@
     <article class="card scan-card">
       <div class="scan-heading">
         <div><p class="eyebrow dark-eyebrow">LIVE OFFER CHECK</p><h2>Scan Uber offer</h2>
-        <p class="muted">Capture the offer screen or choose a screenshot. The app reads the amount and kilometres.</p></div>
+        <p class="muted">Choose or capture an offer screenshot. Scanning and profit calculation start automatically.</p></div>
         <span class="scan-icon">⌁</span>
       </div>
       <label class="upload-label" for="offerImage">
@@ -45,7 +45,7 @@
       <input id="offerImage" class="file-input" type="file" accept="image/*" capture="environment">
       <img id="offerPreview" class="offer-preview" alt="Selected offer screenshot" hidden>
       <div class="scan-actions">
-        <button class="primary" id="scanButton" type="button" disabled>Read offer details</button>
+        <span class="auto-scan-badge">⚡ AUTO SCAN ENABLED</span>
         <button class="secondary" id="clearScan" type="button">Clear</button>
       </div>
       <div id="scanStatus" class="scan-status" role="status">Choose an offer screenshot to begin.</div>
@@ -74,7 +74,7 @@
           <input id="scanTrip" type="number" min="0" step="0.1" placeholder="2.1">
         </label>
       </div>
-      <div class="result" id="scanEstimate">Scan an offer to calculate estimated profit.</div>
+      <div class="result" id="scanEstimate">Select an offer screenshot. The app will scan it automatically.</div>
       <button class="primary" id="saveScannedOrder" type="button" disabled>Save as completed order</button>
       <p class="hint">Check the detected values before saving. For a delivery with multiple stops, enter the total route distance shown by Uber in the Trip distance field and keep Pickup distance at 0.</p>
     </article>

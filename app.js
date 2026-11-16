@@ -60,8 +60,8 @@ offerEls.concat(["scanType"]).forEach(id=>$(id).addEventListener("input",updateO
 $("offerImage").addEventListener("change",e=>{
  const file=e.target.files&&e.target.files[0];if(!file)return;
  selectedImage=file;if(previewUrl)URL.revokeObjectURL(previewUrl);previewUrl=URL.createObjectURL(file);
- $("offerPreview").src=previewUrl;$("offerPreview").hidden=false;$("scanButton").disabled=false;
- setScanStatus("Image ready. Tap “Read offer details” to scan it.");
+ $("offerPreview").src=previewUrl;$("offerPreview").hidden=false;
+ runOfferScan();
 });
 function loadTesseract(){
  if(window.Tesseract)return Promise.resolve(window.Tesseract);
@@ -88,28 +88,33 @@ function parseOfferText(text){
  if(isDelivery && distanceMatches.length>=1 && /\btotal\b/i.test(normalized)){pickup=0;trip=distanceMatches[distanceMatches.length-1];}
  return {pay,pickup,trip,type:isDelivery?"Delivery":"Moto",raw:text};
 }
-$("scanButton").addEventListener("click",async()=>{
+async function runOfferScan(){
  if(!selectedImage)return;
- $("scanButton").disabled=true;setScanStatus("Reading image… This may take a little time.");
+ setScanStatus("Image selected. Starting automatic scan…");
+ ["scanPay","scanPickup","scanTrip"].forEach(id=>$(id).value="");
+ updateOfferPreview();
  try{
   const T=await loadTesseract();
-  const result=await T.recognize(selectedImage,"eng",{logger:m=>{if(m.status==="recognizing text")setScanStatus("Reading offer text… "+Math.round((m.progress||0)*100)+"%")}});
+  const result=await T.recognize(selectedImage,"eng",{logger:m=>{
+   if(m.status==="loading tesseract core")setScanStatus("Preparing OCR engine…");
+   else if(m.status==="recognizing text")setScanStatus("Automatically reading offer… "+Math.round((m.progress||0)*100)+"%");
+  }});
   const parsed=parseOfferText(result.data.text||"");
   if(parsed.pay>0)$("scanPay").value=parsed.pay;
-  if(parsed.pickup>=0)$("scanPickup").value=parsed.pickup;
+  if(parsed.pickup>0)$("scanPickup").value=parsed.pickup;
   if(parsed.trip>0)$("scanTrip").value=parsed.trip;
   if(parsed.pay>0||parsed.trip>0){
-   $("scanType").value=parsed.type;updateOfferPreview();setScanStatus("Scan complete. Check the amount and distances below before saving.","success");
+   $("scanType").value=parsed.type;updateOfferPreview();
+   setScanStatus("Automatic scan complete. Please verify the detected values before using or saving them.","success");
   }else{
-   setScanStatus("Could not confidently find the amount or kilometres. Try a clearer screenshot, or correct the fields below.","error");
+   setScanStatus("Could not confidently read the offer. Try a clearer screenshot or correct the fields manually.","error");
   }
- }catch(err){setScanStatus(err.message||"Scan failed. Try again with a clear image.","error")}
- finally{$("scanButton").disabled=false}
-});
+ }catch(err){setScanStatus(err.message||"Automatic scan failed. Check your internet connection and try again.","error")}
+}
 $("clearScan").onclick=()=>{
  selectedImage=null;$("offerImage").value="";$("offerPreview").hidden=true;$("offerPreview").removeAttribute("src");
  $("scanPay").value="";$("scanPickup").value="";$("scanTrip").value="";$("scanType").value="Moto";
- if(previewUrl)URL.revokeObjectURL(previewUrl);previewUrl=null;updateOfferPreview();$("scanButton").disabled=true;
+ if(previewUrl)URL.revokeObjectURL(previewUrl);previewUrl=null;updateOfferPreview();
  setScanStatus("Choose an offer screenshot to begin.");
 };
 $("saveScannedOrder").onclick=()=>{

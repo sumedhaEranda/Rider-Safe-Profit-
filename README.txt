@@ -4,12 +4,13 @@ Includes:
 - iPhone and Android installable Progressive Web App.
 - Uber Moto and Uber Delivery offer scanner.
 - Camera capture or screenshot upload.
+- Automatic OCR starts as soon as a screenshot is selected; no Read Offer Details button is needed.
 - OCR reads LKR offer amount and km values (Tesseract.js, English).
 - Editable detected values, estimated fuel/maintenance/profit and order/km guide.
 - Existing order/expense history, settings and CSV export remain supported.
 
 IMPORTANT:
-1. OCR requires internet access the first time because the OCR engine is loaded from jsDelivr. Camera access requires HTTPS (or localhost).
+1. OCR requires internet access to load the OCR engine from jsDelivr. Camera access requires HTTPS (or localhost). Selecting/capturing an image starts OCR automatically.
 2. Always verify the scanned amount and distances before saving. OCR can misread text.
 3. For a Moto offer with pickup and trip distances, the app adds both values.
 4. For a multi-stop Delivery offer that displays one total distance, it uses that total distance. If the screenshot shows separate pickup and trip distances, verify the fields and adjust them.

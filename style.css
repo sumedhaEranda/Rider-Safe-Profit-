@@ -27,3 +27,5 @@
 .offer-input-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px}
 .offer-input-grid label{margin:8px 0}
 @media(max-width:380px){.offer-price{font-size:30px}.offer-stats{gap:4px}.offer-stats b{font-size:13px}}
+
+.auto-scan-badge{display:inline-flex;align-items:center;padding:11px 12px;border-radius:10px;background:#e8f7f0;color:#087e5b;font-size:11px;font-weight:800;letter-spacing:.3px;margin-top:8px}
